@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mood:Log - 우리의 기록, 우리의 마음</title>
+    <style>
+        /* 기본 스타일 및 트렌드 컬러 반영 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            background-color: #F7F3F0; /* 리넨 톤 */
+            color: #333;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: #F7F3F0;
+            position: relative;
+            padding-bottom: 100px;
+        }
+
+        /* 타이포그래피 */
+        h1, h2, h3 {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 500;
+            margin: 0;
+        }
+        h1 { font-size: 22pt; color: #4A4A4A; line-height: 1.3; }
+        h2 { font-size: 16pt; color: #BCB1A1; border-left: 4px solid #BCB1A1; padding-left: 12px; margin: 40px 20px 20px 20px; }
+        p { font-size: 10pt; color: #666; line-height: 1.7; }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #F7F3F0;
+            border-bottom: 1px solid #E5E0DA;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header h1 { font-size: 16pt; letter-spacing: 2px; }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #E5E0DA 0%, #F7F3F0 100%);
+        }
+        .hero-img {
+            width: 100%;
+            height: 200px;
+            background-color: #D6CFC7;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 9pt;
+        }
+
+        /* 우리의 활동 Section */
+        .activities {
+            padding: 0 20px;
+        }
+        .activity-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #E5E0DA;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .activity-card h3 { font-size: 12pt; color: #5F8D93; margin-bottom: 8px; }
+        .activity-card p { margin: 0; font-size: 9.5pt; color: #777; }
+
+        /* 명언 카드 Section */
+        .quote-section {
+            padding: 0 20px 40px 20px;
+        }
+        .quote-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .quote-card {
+            background-color: #EDE7E1; /* 약간 더 짙은 뉴트럴 톤 */
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 40pt;
+            color: #BCB1A1;
+            font-family: 'Noto Serif KR';
+            opacity: 0.5;
+        }
+        .quote-text {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 11pt;
+            color: #4A4A4A;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+        .quote-author {
+            margin-top: 15px;
+            font-size: 8pt;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        /* Sticky CTA */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            padding: 20px 0;
+            background: linear-gradient(to top, #F7F3F0 70%, rgba(247, 243, 240, 0) 100%);
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+        }
+        .btn-apply {
+            width: 85%;
+            background-color: #4A4A4A;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 11pt;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mobile-container">
+        <header>
+            <h1>MOOD:LOG</h1>
+            <!-- <div style="font-size: 14pt; color: #4A4A4A;">☰</div> -->
+        </header>
+
+        <section class="hero">
+           <img class="hero-img" src="./main_image.png" alt="">
+            <h1>기록은 마음을<br>정돈하는 가장 품위 있는 방법입니다.</h1>
+        </section>
+
+        <section class="activities">
+            <h2>우리의 활동</h2>
+            <div class="activity-card">
+                <h3>01. 감정의 언어 찾기</h3>
+                <p>단어 뒤에 숨은 진짜 내 감정을 마주하고, 준비된 기록지에 온전히 쏟아냅니다.</p>
+            </div>
+            <div class="activity-card">
+                <h3>02. 무음의 몰입 (Log-off)</h3>
+                <p>스마트폰을 잠시 내려놓고, 백색소음과 함께 텍스트의 세계로 깊이 침잠합니다.</p>
+            </div>
+            <div class="activity-card">
+                <h3>03. 오감의 위로</h3>
+                <p>나의 기분에 맞는 향기를 선택하고, 따뜻한 차 한 잔과 함께 감각을 깨웁니다.</p>
+            </div>
+            <div class="activity-card">
+                <h3>04. 감정의 시각화</h3>
+                <p>한 달간 쌓인 감정의 궤적을 확인하고, 실링 왁스로 소중히 봉인하여 간직합니다.</p>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <h2>마음을 적시는 문장들</h2>
+            <div class="quote-container">
+                <div class="quote-card">
+                    <div class="quote-text">나를 기록하는 것은<br>방황하는 내 마음의 닻을 내리는 일이다.</div>
+                    <div class="quote-author">— MOOD:LOG ESSENCE</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">감정은 날씨와 같다.<br>지나가는 구름을 바라보듯 그저 바라보라.</div>
+                    <div class="quote-author">— P. PEMA CHÖDRÖN</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">쓰는 사람만이 자신의 내면을<br>마주할 용기를 얻는다.</div>
+                    <div class="quote-author">— REFLECTION NOTE</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <a href="#" class="btn-apply">지금, 나를 위한 기록 시작하기</a>
+        </footer>
+    </div>
+</body>
+</html>
