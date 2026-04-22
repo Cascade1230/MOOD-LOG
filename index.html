@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mood:Log - 우리의 기록, 우리의 마음</title>
+    <title>Mood:Log - 당신의 마음을 조율하는 시간</title>
     <style>
-        /* 기본 스타일 및 트렌드 컬러 반영 */
+        /* 2026 Aesthetic Palette */
+        :root {
+            --bg-linen: #F7F3F0;
+            --text-charcoal: #4A4A4A;
+            --accent-teal: #5F8D93;
+            --sand-gold: #BCB1A1;
+            --soft-white: #FFFFFF;
+            --border-beige: #E5E0DA;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-            background-color: #F7F3F0; /* 리넨 톤 */
-            color: #333;
-            overflow-x: hidden;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-linen);
+            color: var(--text-charcoal);
+            line-height: 1.6;
             display: flex;
             justify-content: center;
         }
@@ -20,188 +29,242 @@
         .mobile-container {
             width: 100%;
             max-width: 480px;
-            background-color: #F7F3F0;
+            background-color: var(--bg-linen);
             position: relative;
-            padding-bottom: 100px;
+            padding-bottom: 120px;
         }
 
-        /* 타이포그래피 */
+        /* Typography */
         h1, h2, h3 {
             font-family: 'Noto Serif KR', serif;
             font-weight: 500;
-            margin: 0;
         }
-        h1 { font-size: 22pt; color: #4A4A4A; line-height: 1.3; }
-        h2 { font-size: 16pt; color: #BCB1A1; border-left: 4px solid #BCB1A1; padding-left: 12px; margin: 40px 20px 20px 20px; }
-        p { font-size: 10pt; color: #666; line-height: 1.7; }
+        
+        .fade-in {
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* Header */
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 15px 20px;
-            background-color: #F7F3F0;
-            border-bottom: 1px solid #E5E0DA;
+            padding: 20px;
+            background-color: rgba(247, 243, 240, 0.9);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        header h1 { font-size: 16pt; letter-spacing: 2px; }
+        header h1 { font-size: 14pt; letter-spacing: 4px; margin: 0; color: var(--text-charcoal); }
 
         /* Hero Section */
         .hero {
-            padding: 40px 20px;
+            padding: 60px 24px;
             text-align: center;
-            background: linear-gradient(to bottom, #E5E0DA 0%, #F7F3F0 100%);
         }
         .hero-img {
             width: 100%;
-            height: 200px;
-            background-color: #D6CFC7;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .hero h2 { font-size: 20pt; line-height: 1.4; color: var(--text-charcoal); margin-bottom: 16px; }
+        .hero p { font-size: 11pt; color: var(--sand-gold); font-weight: 500; letter-spacing: -0.5px; }
+
+        /* Brand Philosophy Section */
+        .philosophy {
+            padding: 40px 24px;
+            background-color: var(--soft-white);
+            margin: 20px 0;
+            text-align: left;
+        }
+        .philosophy h2 { font-size: 15pt; color: var(--sand-gold); margin-bottom: 15px; border: none; padding: 0; }
+        .philosophy p { font-size: 10pt; color: #777; line-height: 1.8; }
+        .highlight { color: var(--accent-teal); font-weight: 600; }
+
+        /* Activities Section */
+        section h2.section-title { 
+            font-size: 16pt; 
+            color: var(--text-charcoal); 
+            margin: 40px 24px 20px; 
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: #888;
-            font-size: 9pt;
+        }
+        section h2.section-title::after {
+            content: ''; flex: 1; height: 1px; background: var(--border-beige); margin-left: 15px;
         }
 
-        /* 우리의 활동 Section */
-        .activities {
-            padding: 0 20px;
-        }
-        .activity-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #E5E0DA;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .activity-card h3 { font-size: 12pt; color: #5F8D93; margin-bottom: 8px; }
-        .activity-card p { margin: 0; font-size: 9.5pt; color: #777; }
-
-        /* 명언 카드 Section */
-        .quote-section {
-            padding: 0 20px 40px 20px;
-        }
-        .quote-container {
+        .activity-item {
+            padding: 0 24px 30px;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
-        .quote-card {
-            background-color: #EDE7E1; /* 약간 더 짙은 뉴트럴 톤 */
-            padding: 30px 25px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
-        .quote-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 40pt;
-            color: #BCB1A1;
-            font-family: 'Noto Serif KR';
-            opacity: 0.5;
-        }
-        .quote-text {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 11pt;
-            color: #4A4A4A;
-            line-height: 1.8;
-            word-break: keep-all;
-        }
-        .quote-author {
-            margin-top: 15px;
-            font-size: 8pt;
-            color: #999;
-            letter-spacing: 1px;
-        }
+        .step-num { font-family: 'Noto Serif KR'; font-size: 18pt; color: var(--border-beige); font-weight: 700; }
+        .activity-content h3 { font-size: 12pt; color: var(--accent-teal); margin: 0 0 8px 0; }
+        .activity-content p { font-size: 9.5pt; color: #777; margin: 0; }
 
-        /* Sticky CTA */
+        /* Gallery/Mood Section */
+        .mood-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 0 24px 40px;
+        }
+        .mood-item {
+            aspect-ratio: 1;
+            background-color: var(--border-beige);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .mood-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+
+        /* Quotes */
+        .quote-card {
+            background-color: #EDE7E1;
+            padding: 40px 30px;
+            margin: 0 24px 20px;
+            border-radius: 2px;
+            text-align: center;
+        }
+        .quote-text { font-family: 'Noto Serif KR'; font-size: 11.5pt; color: var(--text-charcoal); line-height: 2; }
+        .quote-author { font-size: 8pt; color: var(--sand-gold); margin-top: 20px; letter-spacing: 2px; }
+
+        /* Info Section */
+        .info-list {
+            padding: 20px 24px;
+            background-color: var(--border-beige);
+            margin-top: 40px;
+        }
+        .info-list dl { margin: 0; font-size: 9pt; }
+        .info-list dt { font-weight: 700; color: var(--text-charcoal); margin-top: 10px; }
+        .info-list dd { margin-left: 0; color: #888; }
+
+        /* Footer CTA */
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
             max-width: 480px;
-            padding: 20px 0;
-            background: linear-gradient(to top, #F7F3F0 70%, rgba(247, 243, 240, 0) 100%);
+            padding: 25px 0;
+            background: linear-gradient(to top, var(--bg-linen) 80%, rgba(247, 243, 240, 0));
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             z-index: 100;
         }
         .btn-apply {
             width: 85%;
-            background-color: #4A4A4A;
-            color: white;
+            background-color: var(--text-charcoal);
+            color: var(--soft-white);
             text-align: center;
-            padding: 16px;
-            border-radius: 30px;
+            padding: 18px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 11pt;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
         }
+        .btn-apply:active { transform: scale(0.98); }
+        .sns-link { margin-top: 15px; font-size: 9pt; color: var(--sand-gold); text-decoration: none; border-bottom: 1px solid var(--sand-gold); }
+
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="mobile-container">
         <header>
             <h1>MOOD:LOG</h1>
-            <!-- <div style="font-size: 14pt; color: #4A4A4A;">☰</div> -->
         </header>
 
-        <section class="hero">
-           <img class="hero-img" src="./main_image.png" alt="">
-            <h1>기록은 마음을<br>정돈하는 가장 품위 있는 방법입니다.</h1>
+        <section class="hero fade-in">
+            <img class="hero-img" src="./main_image.png" alt="Mood:Log Mood Image">
+            <h2>기록은 마음을<br>정돈하는 가장 품위 있는 방법입니다.</h2>
+            <p>대전 둔산동 ｜ 기록 공동체</p>
         </section>
 
-        <section class="activities">
-            <h2>우리의 활동</h2>
-            <div class="activity-card">
-                <h3>01. 감정의 언어 찾기</h3>
-                <p>단어 뒤에 숨은 진짜 내 감정을 마주하고, 준비된 기록지에 온전히 쏟아냅니다.</p>
+        <section class="philosophy">
+            <h2>Digital Log-off, Mind Tuning</h2>
+            <p>
+                우리는 매일 수만 줄의 데이터를 처리하며 살아갑니다. 
+                때로는 과부하된 일상을 멈추고, <span class="highlight">내면의 로그(Log)</span>를 살펴봐야 합니다. 
+                <br><br>
+                무드로그는 단순히 글을 쓰는 모임이 아닙니다. 
+                엉킨 감정의 실타래를 한 줄씩 풀어내어, 당신이라는 존재를 가장 평온한 상태로 <span class="highlight">조율(Tuning)</span>하는 **정성스러운 갈무리의 과정**입니다.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">우리의 활동</h2>
+            
+            <div class="activity-item">
+                <div class="step-num">01</div>
+                <div class="activity-content">
+                    <h3>감정의 언어 찾기</h3>
+                    <p>정의되지 않은 채 떠도는 마음을 단어로 붙잡습니다. 나만의 감정 사전을 만드는 첫걸음입니다.</p>
+                </div>
             </div>
-            <div class="activity-card">
-                <h3>02. 무음의 몰입 (Log-off)</h3>
-                <p>스마트폰을 잠시 내려놓고, 백색소음과 함께 텍스트의 세계로 깊이 침잠합니다.</p>
+
+            <div class="activity-item">
+                <div class="step-num">02</div>
+                <div class="activity-content">
+                    <h3>무음의 몰입</h3>
+                    <p>스마트폰은 잠시 로그아웃. 백색소음과 사각거리는 연필 소리만이 가득한 공간에서 나에게 집중합니다.</p>
+                </div>
             </div>
-            <div class="activity-card">
-                <h3>03. 오감의 위로</h3>
-                <p>나의 기분에 맞는 향기를 선택하고, 따뜻한 차 한 잔과 함께 감각을 깨웁니다.</p>
+
+            <div class="activity-item">
+                <div class="step-num">03</div>
+                <div class="activity-content">
+                    <h3>오감의 위로</h3>
+                    <p>종이의 질감, 잉크의 향기, 그리고 정갈하게 준비된 차 한 잔이 당신의 감각을 부드럽게 깨웁니다.</p>
+                </div>
             </div>
-            <div class="activity-card">
-                <h3>04. 감정의 시각화</h3>
-                <p>한 달간 쌓인 감정의 궤적을 확인하고, 실링 왁스로 소중히 봉인하여 간직합니다.</p>
+
+            <div class="activity-item">
+                <div class="step-num">04</div>
+                <div class="activity-content">
+                    <h3>감정의 시각화</h3>
+                    <p>완성된 기록을 실링 왁스로 봉인합니다. 오늘의 평온함을 물리적인 질감으로 간직하는 의식입니다.</p>
+                </div>
             </div>
+        </section>
+
+        <section class="mood-grid">
+            <div class="mood-item"><img src="./mood1.png" alt="Mood"></div>
+            <div class="mood-item"><img src="./mood2.png" alt="Mood"></div>
         </section>
 
         <section class="quote-section">
-            <h2>마음을 적시는 문장들</h2>
-            <div class="quote-container">
-                <div class="quote-card">
-                    <div class="quote-text">나를 기록하는 것은<br>방황하는 내 마음의 닻을 내리는 일이다.</div>
-                    <div class="quote-author">— MOOD:LOG ESSENCE</div>
-                </div>
-                <div class="quote-card">
-                    <div class="quote-text">감정은 날씨와 같다.<br>지나가는 구름을 바라보듯 그저 바라보라.</div>
-                    <div class="quote-author">— P. PEMA CHÖDRÖN</div>
-                </div>
-                <div class="quote-card">
-                    <div class="quote-text">쓰는 사람만이 자신의 내면을<br>마주할 용기를 얻는다.</div>
-                    <div class="quote-author">— REFLECTION NOTE</div>
-                </div>
+            <div class="quote-card">
+                <div class="quote-text">나를 기록하는 것은<br>방황하는 내 마음의 닻을 내리는 일이다.</div>
+                <div class="quote-author">— MOOD:LOG</div>
             </div>
         </section>
 
+        <section class="info-list">
+            <dl>
+                <dt>LOCATION</dt>
+                <dd>대전 서구 둔산동 프라이빗 공간 (상세 위치 개별 안내)</dd>
+                <dt>SCHEDULE</dt>
+                <dd>매주 토요일 오후 3시 (정기 모임)</dd>
+                <dt>MEMBERSHIP</dt>
+                <dd>한 타임당 4~6명의 소수 정예 운영</dd>
+            </dl>
+        </section>
+
         <footer>
-            <a href="#" class="btn-apply">지금, 나를 위한 기록 시작하기</a>
+            <a href="https://tally.so/r/QKB9A8" class="btn-apply">지금, 나를 위한 기록 시작하기</a>
+            <a href="https://instagram.com/moodlog_archive" class="sns-link">Instagram @moodlog_archive</a>
         </footer>
     </div>
 </body>
